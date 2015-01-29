@@ -33,6 +33,12 @@ extern "C" {
         plugin->Initialize();
     }
 
+    /* Called when plugin is getting destroyed */
+    void DestroyPlugin(PluginId Id) {
+	STPluginBase *plugin = _LocalPlugins[Id];
+        plugin->Destroy();
+    }
+
     void OnEvent(PluginId Id, PluginEventId EventId, PluginEventData EventData) {
         STPluginBase *plugin = _LocalPlugins[Id];
         plugin->OnEvent(EventId, EventData);
